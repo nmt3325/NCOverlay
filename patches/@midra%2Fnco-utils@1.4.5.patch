@@ -1,0 +1,40 @@
+diff --git a/dist/api/services/niconico/threadKey/v1.js b/dist/api/services/niconico/threadKey/v1.js
+index ab1fdb14ef70491a829ff13b158a388175dd8aab..98464728e511fc59a2f462c7e2ef7dbf04b13e03 100644
+--- a/dist/api/services/niconico/threadKey/v1.js
++++ b/dist/api/services/niconico/threadKey/v1.js
+@@ -13,7 +13,8 @@ async function threadKeyV1(videoId) {
+ 			headers: {
+ 				"X-Frontend-Id": "6",
+ 				"X-Frontend-Version": "0",
+-				"X-Niconico-Language": "ja-jp"
++				"X-Niconico-Language": "ja-jp",
++                "Accept-Language": "ja-JP,ja;q=0.9"
+ 			}
+ 		})).json();
+ 		if (!isResponseOk(json)) throw new Error(`${json.meta.status} ${json.meta.errorCode}`);
+diff --git a/dist/api/services/niconico/threads/v1.js b/dist/api/services/niconico/threads/v1.js
+index 74aed5a626de3a37f9a7f4b78e5057bfc79819be..3ddc8c9f0705f3aace459cbbca3db8174162a534 100644
+--- a/dist/api/services/niconico/threads/v1.js
++++ b/dist/api/services/niconico/threads/v1.js
+@@ -17,7 +17,8 @@ async function threadsV1({ videoId, nvComment, additionals, _refreshThreadKey =
+ 			headers: {
+ 				"X-Frontend-Id": "6",
+ 				"X-Frontend-Version": "0",
+-				"X-Client-Os-Type": "others"
++				"X-Client-Os-Type": "others",
++                "Accept-Language": "ja-JP,ja;q=0.9"
+ 			},
+ 			mode: "cors",
+ 			credentials: "omit",
+diff --git a/dist/api/services/niconico/watch/index.js b/dist/api/services/niconico/watch/index.js
+index e6ecae448204dd9e054f35b10392bf707e48a451..ec9333261b9989901be1169a11960f8c117b9537 100644
+--- a/dist/api/services/niconico/watch/index.js
++++ b/dist/api/services/niconico/watch/index.js
+@@ -23,6 +23,7 @@ async function watch(videoId, credentials) {
+ 		try {
+ 			const json = await (await fetch(url, {
+ 				mode: "cors",
++                headers: { "Accept-Language": "ja-JP,ja;q=0.9" },
+ 				credentials
+ 			})).json();
+ 			if (!isResponseOk(json)) throw new Error(`${json.meta.status} ${json.meta.code}: ${json.data.response}`);

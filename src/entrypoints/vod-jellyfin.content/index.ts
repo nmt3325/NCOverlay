@@ -55,11 +55,15 @@ async function main() {
       if (!patcher) {
         patcher = new NCOPatcher(vod, {
           getInfo: async (nco) => {
-            const heading = document.querySelector<HTMLElement>(
-              '.videoOsdTitle, .videoOsdText, .nowPlayingBarText, .itemName, .detailPagePrimaryContainer h1'
-            )
-            const title = heading?.textContent?.trim()
-              || document.title.replace(/\s*[-|]\s*Jellyfin\s*$/i, '').trim()
+            // Jellyfin's .itemName may contain only "Season 1 - 1. Episode".
+            // Prefer both show title and episode label for comment matching.
+            const series = document.querySelector<HTMLElement>('.parentName')?.textContent?.trim()
+            const episode = document.querySelector<HTMLElement>('.itemName')?.textContent?.trim()
+            const pageTitle = document.title
+              .replace(/\s*\(\d{4}\)\s*$/, '')
+              .replace(/\s*[-|]\s*Jellyfin\s*$/i, '')
+              .trim()
+            const title = series && episode ? `${series} ${episode}` : pageTitle
             return title ? { input: title, duration: nco.video.duration || 0 } : null
           },
           appendCanvas: (target, canvas) => {

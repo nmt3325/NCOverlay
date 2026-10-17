@@ -10,7 +10,12 @@
 ## 概要
 動画配信サービスの再生画面にニコニコのコメントを表示する拡張機能です。
 
+## Jellyfin 対応フォーク
+
+Jellyfin Webプレイヤーに対応しました。任意のHTTP(S)ホスト（IPアドレス・ポートを含む）を検出するため、ブラウザ側の拡張機能を読み込んで利用します。Jellyfinサーバーのプラグインは不要です。初期対応ではタイトルを再生画面から取得します。作品の厳密なエピソード照合は今後改善予定です。
+
 ## 対応している動画配信サービス
+- Jellyfin Web
 - [dアニメストア](https://animestore.docomo.ne.jp/animestore/)
 - [ABEMA](https://abema.tv/)
 - [バンダイチャンネル](https://www.b-ch.com/)

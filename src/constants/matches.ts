@@ -15,5 +15,7 @@ export const MATCHES: Record<VodKey, string[]> = {
   nhkOne: ['https://www.web.nhk/*'],
   nhkOndemand: ['https://www.nhk-ondemand.jp/goods/*'],
   tver: ['https://tver.jp/*'],
+  // Self-hosted Jellyfin instances may use arbitrary domains, IPs and ports.
+  jellyfin: ['http://*/*', 'https://*/*'],
   _local: [],
 }

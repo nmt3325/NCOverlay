@@ -1,0 +1,9 @@
+.NCOverlay-Jellyfin-VideoParent { position: relative !important; }
+.NCOverlay-Jellyfin-VideoParent > .NCOverlay-Canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 20 !important;
+  pointer-events: none !important;
+}

@@ -15,6 +15,7 @@ export const VOD_KEYS = [
   'nhkOne',
   'nhkOndemand',
   'tver',
+  'jellyfin',
   '_local',
 ] as const
 
@@ -34,6 +35,7 @@ export const VODS = {
   nhkOne: 'NHK ONE',
   nhkOndemand: 'NHKオンデマンド',
   tver: 'TVer',
+  jellyfin: 'Jellyfin',
   _local: 'ローカルファイル',
 } as const satisfies {
   [P in VodKey]: string

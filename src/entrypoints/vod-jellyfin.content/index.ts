@@ -63,7 +63,10 @@ async function main() {
               .replace(/\s*\(\d{4}\)\s*$/, '')
               .replace(/\s*[-|]\s*Jellyfin\s*$/i, '')
               .trim()
-            const title = series && episode ? `${series} ${episode}` : pageTitle
+            const match = episode?.match(/^Season\s+(\d+)\s*-\s*(\d+)\.\s*(.*)$/i)
+            const title = series && match
+              ? `${series} Season ${match[1]} 第${match[2]}話 ${match[3]}`.trim()
+              : series && episode ? `${series} ${episode}` : pageTitle
             return title ? { input: title, duration: nco.video.duration || 0 } : null
           },
           appendCanvas: (target, canvas) => {
